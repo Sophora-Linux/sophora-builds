@@ -21,7 +21,7 @@ mount -t sysfs none "${CHROOT_DIR}/sys"
 mount --rbind /dev "${CHROOT_DIR}/dev"
 
 # Chroot dans le dossier et exécuter les commandes de mise à jour
-chroot "${CHROOT_DIR}" /bin/bash -c "eix-sync && emerge --sync && emerge -vuDN @world && rm -rf /var/cache/distfiles/* && history -c"
+chroot "${CHROOT_DIR}" /bin/bash -c "eix-sync && emerge --sync && emerge -vuDN @world && rm -rf /var/cache/distfiles/* && history -c && exit"
 
 # Sortir du chroot et démonter les systèmes de fichiers virtuels
 umount -Rl "${CHROOT_DIR}/*"
